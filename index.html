@@ -61,24 +61,58 @@ body, html{
     margin:auto;
     line-height:1.6;
     white-space:pre-line;
+    margin-bottom:20px;
 }
 
-/* Social icons */
+/* GD info lines */
+.gd-info{
+    font-family: 'Comic Neue', cursive;
+    font-size:20px;
+    line-height:1.5;
+    margin-bottom:30px;
+    background: linear-gradient(90deg, #00ccff, #ffffff);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gdGradient 10s ease infinite;
+}
+
+@keyframes gdGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Social icons + text */
 .links{
-    margin-top:40px;
+    display:flex;
+    flex-direction:column;
+    gap:8px; /* closer spacing */
+    align-items:center;
+    margin-top:0;
+}
+
+.social-text{
+    font-family: 'Comic Neue', cursive;
+    font-size:18px;
+    color:white;
+    margin-bottom:5px;
+}
+
+.links-row{
     display:flex;
     flex-direction:row;
     gap:24px;
     justify-content:center;
 }
 
-.links a{
+.links-row a{
     color:white;
     font-size:32px;
     transition:0.3s;
 }
 
-.links a:hover{
+.links-row a:hover{
     color:#a29bfe; /* light purple on hover */
     transform: scale(1.2);
 }
@@ -103,9 +137,14 @@ just mindin' my own business here
 lets have a drink sometime
     </div>
 
-    <h2 style="margin-top:60px;">Socials</h2>
+    <div class="gd-info">
+GD hardest: New Record<br>
+Going for: Jesse Pinkman<br>
+Username: yzc1
+    </div>
 
-    <div class="links">
+    <div class="social-text">Socials</div>
+    <div class="links-row">
         <a href="https://www.youtube.com/@yzc1gd" target="_blank" title="YouTube">
             <i class="fab fa-youtube"></i>
         </a>
