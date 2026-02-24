@@ -76,7 +76,7 @@ a:hover{
 .star{
     position:absolute;
     color:white;
-    font-size:1px;
+    font-size:2px; /* default size, will override in JS */
     user-select:none;
     pointer-events:none;
 }
@@ -110,9 +110,18 @@ for(let i=0;i<starCount;i++){
     star.classList.add('star');
     star.style.left = Math.random()*window.innerWidth + 'px';
     star.style.top = Math.random()*window.innerHeight + 'px';
-    star.style.fontSize = Math.random()*2 + 1 + 'px'; // size variation
-    star.style.opacity = Math.random()*0.8 + 0.2; // faint stars
-    star.innerText = '*';
+
+    // Bigger size variation
+    const size = Math.random()*4 + 2; // 2px to 6px
+    star.style.fontSize = size + 'px';
+
+    // Slight opacity variation
+    star.style.opacity = Math.random()*0.7 + 0.3; 
+
+    // Randomly choose ASCII star character
+    const chars = ['*', '+', '.', '•', '✦'];
+    star.innerText = chars[Math.floor(Math.random()*chars.length)];
+
     document.body.appendChild(star);
     stars.push(star);
 }
@@ -123,7 +132,7 @@ document.addEventListener('mousemove', e=>{
     const y = e.clientY / window.innerHeight;
 
     stars.forEach((star,i)=>{
-        const factor = (i % 3 + 1) * 5; // different speeds
+        const factor = (i % 3 + 1) * 10; // different speeds
         star.style.transform = `translate(${x*factor}px, ${y*factor}px)`;
     });
 });
