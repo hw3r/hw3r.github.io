@@ -4,212 +4,251 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>hw3r</title>
+<title>hwr3</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://fonts.googleapis.com/css2?family=Sour+Gummy&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-body, html{
-    margin:0;
-    padding:0;
-    height:100%;
-    overflow:hidden;
-    background:black;
-    color:white;
-    font-family:Arial, Helvetica, sans-serif;
+
+body{
+margin:0;
+background:black;
+color:white;
+font-family:'Nunito',sans-serif;
+overflow-x:hidden;
 }
 
-.wrapper{
-    position:relative;
-    z-index:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:60px 20px;
+.content{
+text-align:center;
+padding:100px 20px;
+position:relative;
+z-index:2;
 }
 
 .name{
-    font-family: 'Sour Gummy', cursive;
-    font-size:80px;
-    margin-bottom:20px;
-    line-height:1.1;
-    background: linear-gradient(90deg, #4b0082, #8e44ad, #bb8fce, #ff66cc, #6a0dad);
-    background-size: 800% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientShift 15s ease infinite;
+font-family:'Sour Gummy',cursive;
+font-size:90px;
+margin-bottom:20px;
+
+background:linear-gradient(90deg,
+#2b0033,
+#5a0dad,
+#b57cff,
+#8a2be2,
+#2b0033);
+
+background-size:400%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+animation:gradientMove 12s linear infinite;
 }
 
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+@keyframes gradientMove{
+0%{background-position:0%}
+100%{background-position:400%}
 }
 
-.description,
-.gd-info,
+.description{
+max-width:600px;
+margin:auto;
+font-size:22px;
+line-height:1.6;
+}
+
+.stats{
+margin-top:20px;
+font-size:22px;
+line-height:1.2;
+
+background:linear-gradient(#8fd3ff,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
 .social-text{
-    font-family: 'Comic Neue', cursive;
-    font-size:20px;
-    white-space:pre-line;
-    margin-bottom:20px;
-}
-
-.gd-info{
-    background: linear-gradient(90deg, #00ccff, #ffffff);
-    background-size: 400% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gdGradient 10s ease infinite;
-    line-height:1.2; 
-    margin-bottom:25px;
-}
-
-@keyframes gdGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+margin-top:60px;
+font-size:32px;
+font-family:'Sour Gummy';
 }
 
 .links{
-    display:flex;
-    flex-direction:column;
-    gap:8px; 
-    align-items:center;
-    margin-top:0;
+margin-top:20px;
+display:flex;
+gap:30px;
+justify-content:center;
 }
 
-.links-row{
-    display:flex;
-    flex-direction:row;
-    gap:24px;
-    justify-content:center;
+.links a{
+font-size:30px;
+color:#d9a7ff;
+transition:0.3s;
 }
 
-.links-row a{
-    color:white;
-    font-size:32px;
-    transition:0.3s;
+.links a:hover{
+color:#ffffff;
+text-shadow:0 0 10px #a855f7;
 }
 
-.links-row a:hover{
-    color:#a29bfe;
-    transform: scale(1.2);
+.cool{
+margin-top:70vh;
+text-align:center;
 }
 
-.star, .asteroid{
-    position:absolute;
-    color:white;
-    user-select:none;
-    pointer-events:none;
-    will-change: transform;
+.cool-title{
+font-size:40px;
+font-family:'Sour Gummy';
+margin-bottom:20px;
 }
+
+.cool-people{
+display:flex;
+justify-content:center;
+gap:40px;
+font-size:20px;
+}
+
+/* stars */
+
+.star{
+position:fixed;
+color:white;
+opacity:0.8;
+pointer-events:none;
+}
+
+/* comets */
+
+.comet{
+position:fixed;
+color:#ffffff;
+font-size:18px;
+opacity:0.9;
+pointer-events:none;
+}
+
 </style>
 </head>
+
 <body>
 
-<div class="wrapper">
-    <div class="name">hw3r</div>
+<div class="content">
 
-    <div class="description">
+<div class="name">hwr3</div>
+
+<div class="description">
 just mindin' my own business here
 lets have a drink sometime
-    </div>
+</div>
 
-    <div class="gd-info">
+<div class="stats">
 GD hardest: New Record<br>
 Going for: Jesse Pinkman<br>
 Username: yzc1<br>
 Discord: hw3r
-    </div>
-
-    <div class="social-text">Socials</div>
-    <div class="links-row">
-        <a href="https://www.youtube.com/@yzc1gd" target="_blank" title="YouTube">
-            <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://www.instagram.com/_yzc1_/reels/" target="_blank" title="Instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
-    </div>
 </div>
+
+<div class="social-text">Socials</div>
+
+<div class="links">
+<a href="https://www.youtube.com/@yzc1gd" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+<a href="https://www.instagram.com/_yzc1_/reels/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+</div>
+
+</div>
+
+
+<div class="cool">
+
+<div class="cool-title">Cool people</div>
+
+<div class="cool-people">
+<div>person 1</div>
+<div>person 2</div>
+<div>person 3</div>
+</div>
+
+</div>
+
 
 <script>
 
-const starCount = 80;
-const stars = [];
+/* static stars */
+
+const starCount = 80
 
 for(let i=0;i<starCount;i++){
-    const star = document.createElement('div');
-    star.classList.add('star');
-    star.style.left = Math.random()*window.innerWidth + 'px';
-    star.style.top = Math.random()*window.innerHeight + 'px';
-    const size = Math.random()*2 + 1.5;
-    star.style.fontSize = size + 'px';
-    star.style.opacity = Math.random()*0.7 + 0.3;
-    const chars = ['*', '+', '.', '•', '✦'];
-    star.innerText = chars[Math.floor(Math.random()*chars.length)];
-    document.body.appendChild(star);
-    stars.push(star);
+
+const star=document.createElement("div")
+star.className="star"
+star.innerText="✦"
+
+star.style.left=Math.random()*100+"vw"
+star.style.top=Math.random()*100+"vh"
+star.style.fontSize=(8+Math.random()*10)+"px"
+
+document.body.appendChild(star)
+
 }
 
 
-const asteroidCount = 30;
-const asteroids = [];
-const constantSpeed = 2;
+/* optimized comets */
 
-for(let i=0;i<asteroidCount;i++){
-    const a = document.createElement('div');
-    a.classList.add('asteroid');
-    a.x = Math.random()*window.innerWidth;
-    a.y = Math.random()*-window.innerHeight;
-    a.vx = (Math.random()-0.5)*1.2;
-    a.vy = constantSpeed;
-    a.symbols = ['*','✦','@','o','•'];
-    a.innerText = a.symbols[Math.floor(Math.random()*a.symbols.length)];
-    a.style.left = a.x + 'px';
-    a.style.top = a.y + 'px';
-    a.style.fontSize = (Math.random()*3+2) + 'px';
-    a.style.opacity = Math.random()*0.7 + 0.3;
-    document.body.appendChild(a);
-    asteroids.push(a);
+const cometCount=6
+const speed=0.05
+
+const comets=[]
+
+for(let i=0;i<cometCount;i++){
+
+const c=document.createElement("div")
+c.className="comet"
+c.innerText="☄"
+
+resetComet(c)
+
+document.body.appendChild(c)
+
+comets.push({
+el:c,
+x:Math.random()*window.innerWidth,
+y:Math.random()*window.innerHeight,
+dx:(Math.random()*2-1)*speed,
+dy:(Math.random()*2-1)*speed
+})
+
 }
 
-
-let mouseX=0, mouseY=0;
-document.addEventListener('mousemove', e=>{
-    mouseX = e.clientX/window.innerWidth;
-    mouseY = e.clientY/window.innerHeight;
-});
+function resetComet(c){
+c.style.left=Math.random()*100+"vw"
+c.style.top="-10px"
+}
 
 function animate(){
-    stars.forEach((s,i)=>{
-        const factor = (i % 3 + 1) * 10;
-        s.style.transform = `translate3d(${mouseX*factor}px, ${mouseY*factor}px,0)`;
-    });
 
-    asteroids.forEach(a=>{
-        a.x += a.vx;
-        a.y += a.vy;
-        if(a.y > window.innerHeight || a.x<-20 || a.x>window.innerWidth+20){
-            a.x = Math.random()*window.innerWidth;
-            a.y = -20;
-            a.vx = (Math.random()-0.5)*1.2;
-            a.vy = constantSpeed;
-            a.innerText = a.symbols[Math.floor(Math.random()*a.symbols.length)];
-        }
-        a.style.transform = `translate3d(${a.x}px, ${a.y}px,0)`;
-    });
+for(const c of comets){
 
-    requestAnimationFrame(animate);
+c.x+=c.dx*60
+c.y+=c.dy*60
+
+if(c.x>window.innerWidth+50||c.x<-50||c.y>window.innerHeight+50||c.y<-50){
+
+c.x=Math.random()*window.innerWidth
+c.y=-20
+
 }
 
-animate();
+c.el.style.transform=`translate(${c.x}px,${c.y}px)`
+
+}
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
+
 </script>
 
 </body>
