@@ -35,17 +35,17 @@ body, html{
     padding:60px 20px;
 }
 
-/* Animated gradient for name (full gradient across text) */
+/* Cosmic animated gradient for name */
 .name{
     font-family: 'Sour Gummy', cursive;
     font-size:80px;
     margin-bottom:20px;
     line-height:1.1;
-    background: linear-gradient(90deg, #9b59b6, #8e44ad, #bb8fce, #a569bd);
-    background-size: 400% 100%; /* make it bigger than the text so it shifts */
+    background: linear-gradient(90deg, #4b0082, #8e44ad, #bb8fce, #ff66cc, #6a0dad);
+    background-size: 800% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientShift 10s ease infinite;
+    animation: gradientShift 15s ease infinite;
 }
 
 @keyframes gradientShift {
@@ -80,7 +80,7 @@ body, html{
 
 .links a:hover{
     color:#a29bfe; /* light purple on hover */
-    transform: scale(1.2); /* subtle pop */
+    transform: scale(1.2);
 }
 
 /* Star elements */
