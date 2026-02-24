@@ -60,18 +60,19 @@ body, html{
 .social-text{
     font-family: 'Comic Neue', cursive;
     font-size:20px;
-    line-height:1.6;
     white-space:pre-line;
     margin-bottom:20px;
 }
 
-/* GD info gradient animation */
+/* GD info gradient animation with tighter line spacing */
 .gd-info{
     background: linear-gradient(90deg, #00ccff, #ffffff);
     background-size: 400% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gdGradient 10s ease infinite;
+    line-height:1.2; /* tighter spacing */
+    margin-bottom:25px; /* slightly smaller bottom margin */
 }
 
 @keyframes gdGradient {
@@ -80,7 +81,7 @@ body, html{
     100% { background-position: 0% 50%; }
 }
 
-/* Social icons + row */
+/* Social icons + text */
 .links{
     display:flex;
     flex-direction:column;
