@@ -72,7 +72,7 @@ body, html{
     -webkit-text-fill-color: transparent;
     animation: gdGradient 10s ease infinite;
     line-height:1.2; /* tighter spacing */
-    margin-bottom:25px; /* slightly smaller bottom margin */
+    margin-bottom:25px;
 }
 
 @keyframes gdGradient {
@@ -108,8 +108,8 @@ body, html{
     transform: scale(1.2);
 }
 
-/* Star elements */
-.star{
+/* Star and asteroid elements */
+.star, .asteroid{
     position:absolute;
     color:white;
     font-size:2px;
@@ -146,7 +146,7 @@ Username: yzc1
 </div>
 
 <script>
-// Create a sparse starfield
+// ---------- Stars ----------
 const starCount = 150;
 const stars = [];
 
@@ -168,16 +168,69 @@ for(let i=0;i<starCount;i++){
     stars.push(star);
 }
 
-// Parallax effect
-document.addEventListener('mousemove', e=>{
-    const x = e.clientX / window.innerWidth;
-    const y = e.clientY / window.innerHeight;
+// ---------- Asteroids ----------
+const asteroidCount = 50;
+const asteroids = [];
 
-    stars.forEach((star,i)=>{
-        const factor = (i % 3 + 1) * 10;
-        star.style.transform = `translate(${x*factor}px, ${y*factor}px)`;
+for(let i=0;i<asteroidCount;i++){
+    const asteroid = document.createElement('div');
+    asteroid.classList.add('asteroid');
+
+    // random starting position
+    asteroid.x = Math.random() * window.innerWidth;
+    asteroid.y = Math.random() * -window.innerHeight; // start above view
+
+    asteroid.vx = (Math.random()-0.5) * 1.5; // left-right drift
+    asteroid.vy = 1 + Math.random()*2; // fall speed
+
+    asteroid.symbols = ['*','✦','@','o','•'];
+    asteroid.innerText = asteroid.symbols[Math.floor(Math.random()*asteroid.symbols.length)];
+
+    asteroid.style.left = asteroid.x + 'px';
+    asteroid.style.top = asteroid.y + 'px';
+    asteroid.style.fontSize = (Math.random()*4+2) + 'px';
+    asteroid.style.opacity = Math.random()*0.7 + 0.3;
+
+    document.body.appendChild(asteroid);
+    asteroids.push(asteroid);
+}
+
+// ---------- Animation ----------
+function animate(){
+    const xRatio = window.innerWidth;
+    const yRatio = window.innerHeight;
+
+    // Parallax stars
+    document.addEventListener('mousemove', e=>{
+        const x = e.clientX / xRatio;
+        const y = e.clientY / yRatio;
+        stars.forEach((star,i)=>{
+            const factor = (i % 3 + 1) * 10;
+            star.style.transform = `translate(${x*factor}px, ${y*factor}px)`;
+        });
     });
-});
+
+    // Move asteroids
+    asteroids.forEach(a=>{
+        a.x += a.vx;
+        a.y += a.vy;
+
+        if(a.y > window.innerHeight || a.x < -20 || a.x > window.innerWidth+20){
+            a.x = Math.random() * window.innerWidth;
+            a.y = -20; // respawn above screen
+            a.vx = (Math.random()-0.5) * 1.5;
+            a.vy = 1 + Math.random()*2;
+            a.innerText = a.symbols[Math.floor(Math.random()*a.symbols.length)];
+        }
+
+        a.style.left = a.x + 'px';
+        a.style.top = a.y + 'px';
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
 </script>
 
 </body>
