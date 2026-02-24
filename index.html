@@ -12,32 +12,59 @@
 
 <style>
 
-body{
+/* Reset */
+body, html{
     margin:0;
+    padding:0;
+    height:100%;
+    overflow:hidden;
     background:black;
     color:white;
     font-family:Arial, Helvetica, sans-serif;
 }
 
+/* Star layers */
+#stars, #stars2, #stars3{
+    position:absolute;
+    top:0;
+    left:0;
+    width:200%;
+    height:200%;
+    background-repeat: repeat;
+    pointer-events:none;
+}
+
+#stars{
+    background-image: radial-gradient(white, transparent 1px);
+    background-size: 2px 2px;
+    z-index:0;
+}
+
+#stars2{
+    background-image: radial-gradient(white, transparent 1px);
+    background-size: 3px 3px;
+    z-index:0;
+}
+
+#stars3{
+    background-image: radial-gradient(white, transparent 1px);
+    background-size: 4px 4px;
+    z-index:0;
+}
+
+/* Content wrapper */
 .wrapper{
-    display:grid;
-    grid-template-columns:60px 1fr 60px;
-    min-height:100vh;
-}
-
-.wall{
-    font-family:monospace;
-    white-space:pre;
-    text-align:center;
-    color:#444;
-    line-height:16px;
-}
-
-.content{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
     text-align:center;
     padding:60px 20px;
+    z-index:1; /* above stars */
 }
 
+/* Name font */
 .name{
     font-family: 'Sour Gummy', cursive;
     font-size:80px;
@@ -45,6 +72,7 @@ body{
     line-height:1.1;
 }
 
+/* About me font */
 .description{
     font-family: 'Comic Neue', cursive;
     max-width:600px;
@@ -53,6 +81,7 @@ body{
     white-space:pre-line;
 }
 
+/* Links */
 .links{
     margin-top:40px;
     display:flex;
@@ -67,6 +96,7 @@ a{
     border:1px solid white;
     padding:12px 26px;
     border-radius:8px;
+    transition:0.3s;
 }
 
 a:hover{
@@ -76,103 +106,45 @@ a:hover{
 
 </style>
 </head>
-
 <body>
 
+<!-- Star layers -->
+<div id="stars"></div>
+<div id="stars2"></div>
+<div id="stars3"></div>
+
+<!-- Main content -->
 <div class="wrapper">
-
-<div class="wall">
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-</div>
-
-<div class="content">
-
-<div class="name">hwr3</div>
-
-<div class="description">
+    <div class="name">hwr3</div>
+    <div class="description">
 just mindin' my own business here
 lets have a drink sometime
+    </div>
+
+    <h2 style="margin-top:80px;">Socials</h2>
+
+    <div class="links">
+        <a href="https://www.youtube.com/@yzc1gd" target="_blank">YouTube</a>
+        <a href="https://www.instagram.com/_yzc1_/reels/" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@_yzc1_" target="_blank">TikTok</a>
+    </div>
 </div>
 
-<h2 style="margin-top:80px;">Socials</h2>
+<script>
+// Parallax star movement
+const stars = document.getElementById('stars');
+const stars2 = document.getElementById('stars2');
+const stars3 = document.getElementById('stars3');
 
-<div class="links">
-<a href="https://www.youtube.com/@yzc1gd" target="_blank">YouTube</a>
-<a href="https://www.instagram.com/_yzc1_/reels/" target="_blank">Instagram</a>
-<a href="https://www.tiktok.com/@_yzc1_" target="_blank">TikTok</a>
-</div>
+document.addEventListener('mousemove', (e)=>{
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
 
-</div>
-
-<div class="wall">
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-</div>
-
-</div>
+    stars.style.transform = `translate(${x*10}px, ${y*10}px)`;
+    stars2.style.transform = `translate(${x*20}px, ${y*20}px)`;
+    stars3.style.transform = `translate(${x*40}px, ${y*40}px)`;
+});
+</script>
 
 </body>
 </html>
