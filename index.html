@@ -54,22 +54,19 @@ body, html{
     100% { background-position: 0% 50%; }
 }
 
-/* About me font */
-.description{
+/* Unified font size for About Me, GD info, Socials label */
+.description,
+.gd-info,
+.social-text{
     font-family: 'Comic Neue', cursive;
-    max-width:600px;
-    margin:auto;
+    font-size:20px;
     line-height:1.6;
     white-space:pre-line;
     margin-bottom:20px;
 }
 
-/* GD info lines */
+/* GD info gradient animation */
 .gd-info{
-    font-family: 'Comic Neue', cursive;
-    font-size:20px;
-    line-height:1.5;
-    margin-bottom:30px;
     background: linear-gradient(90deg, #00ccff, #ffffff);
     background-size: 400% 100%;
     -webkit-background-clip: text;
@@ -83,20 +80,13 @@ body, html{
     100% { background-position: 0% 50%; }
 }
 
-/* Social icons + text */
+/* Social icons + row */
 .links{
     display:flex;
     flex-direction:column;
-    gap:8px; /* closer spacing */
+    gap:8px; /* spacing between text and icons */
     align-items:center;
     margin-top:0;
-}
-
-.social-text{
-    font-family: 'Comic Neue', cursive;
-    font-size:18px;
-    color:white;
-    margin-bottom:5px;
 }
 
 .links-row{
