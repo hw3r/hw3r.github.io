@@ -168,9 +168,10 @@ for(let i=0;i<starCount;i++){
     stars.push(star);
 }
 
-// ---------- Asteroids ----------
+// ---------- Asteroids / comets ----------
 const asteroidCount = 50;
 const asteroids = [];
+const constantSpeed = 2; // same speed for all
 
 for(let i=0;i<asteroidCount;i++){
     const asteroid = document.createElement('div');
@@ -178,10 +179,10 @@ for(let i=0;i<asteroidCount;i++){
 
     // random starting position
     asteroid.x = Math.random() * window.innerWidth;
-    asteroid.y = Math.random() * -window.innerHeight; // start above view
+    asteroid.y = Math.random() * -window.innerHeight; // start above screen
 
-    asteroid.vx = (Math.random()-0.5) * 1.5; // left-right drift
-    asteroid.vy = 1 + Math.random()*2; // fall speed
+    asteroid.vx = (Math.random()-0.5) * 1.5; // horizontal drift
+    asteroid.vy = constantSpeed; // same vertical speed
 
     asteroid.symbols = ['*','✦','@','o','•'];
     asteroid.innerText = asteroid.symbols[Math.floor(Math.random()*asteroid.symbols.length)];
@@ -197,13 +198,10 @@ for(let i=0;i<asteroidCount;i++){
 
 // ---------- Animation ----------
 function animate(){
-    const xRatio = window.innerWidth;
-    const yRatio = window.innerHeight;
-
     // Parallax stars
     document.addEventListener('mousemove', e=>{
-        const x = e.clientX / xRatio;
-        const y = e.clientY / yRatio;
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
         stars.forEach((star,i)=>{
             const factor = (i % 3 + 1) * 10;
             star.style.transform = `translate(${x*factor}px, ${y*factor}px)`;
@@ -219,7 +217,7 @@ function animate(){
             a.x = Math.random() * window.innerWidth;
             a.y = -20; // respawn above screen
             a.vx = (Math.random()-0.5) * 1.5;
-            a.vy = 1 + Math.random()*2;
+            a.vy = constantSpeed; // maintain same speed
             a.innerText = a.symbols[Math.floor(Math.random()*a.symbols.length)];
         }
 
