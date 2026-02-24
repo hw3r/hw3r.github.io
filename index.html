@@ -3,18 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>hwr3</title>
+
+<!-- font for the name -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 
 <style>
 
 body{
     margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#0f172a;
+    background:black;
     color:white;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-/* sections */
+/* scrolling sections */
 
 section{
     min-height:100vh;
@@ -26,19 +30,18 @@ section{
     padding:40px;
 }
 
-h1{
-    font-size:64px;
-    margin-bottom:10px;
-}
+/* name style */
 
-p{
-    opacity:0.8;
+.name{
+    font-family:'Orbitron', sans-serif;
+    font-size:70px;
+    letter-spacing:4px;
 }
 
 /* links */
 
 .links{
-    margin-top:40px;
+    margin-top:30px;
     display:flex;
     flex-direction:column;
     gap:20px;
@@ -46,23 +49,17 @@ p{
 
 a{
     text-decoration:none;
-    font-size:22px;
     color:white;
-    background:#334155;
+    border:1px solid white;
     padding:14px 28px;
-    border-radius:10px;
+    border-radius:8px;
+    font-size:20px;
     transition:0.2s;
 }
 
 a:hover{
-    background:#475569;
-    transform:translateY(-3px);
-}
-
-/* alternating background sections */
-
-.alt{
-    background:#020617;
+    background:white;
+    color:black;
 }
 
 </style>
@@ -71,28 +68,28 @@ a:hover{
 <body>
 
 <section>
-<h1>hwr3</h1>
-<p>Welcome to my page</p>
+<div class="name">hwr3</div>
+<p>Welcome</p>
 </section>
 
-<section class="alt">
+<section>
 <h2>YouTube</h2>
 <div class="links">
-<a href="https://www.youtube.com/@yzc1gd" target="_blank">Visit Channel</a>
+<a href="https://www.youtube.com/@yzc1gd" target="_blank">youtube</a>
 </div>
 </section>
 
 <section>
 <h2>Instagram</h2>
 <div class="links">
-<a href="https://www.instagram.com/_yzc1_/reels/" target="_blank">View Instagram</a>
+<a href="https://www.instagram.com/_yzc1_/reels/" target="_blank">instagram</a>
 </div>
 </section>
 
-<section class="alt">
+<section>
 <h2>TikTok</h2>
 <div class="links">
-<a href="https://www.tiktok.com/@_yzc1_" target="_blank">Watch TikTok</a>
+<a href="https://www.tiktok.com/@_yzc1_" target="_blank">tiktok</a>
 </div>
 </section>
 
