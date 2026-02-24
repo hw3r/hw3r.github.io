@@ -35,7 +35,6 @@ body, html{
     padding:60px 20px;
 }
 
-/* Cosmic animated gradient for name */
 .name{
     font-family: 'Sour Gummy', cursive;
     font-size:80px;
@@ -54,7 +53,6 @@ body, html{
     100% { background-position: 0% 50%; }
 }
 
-/* Unified font size for About Me, GD info, Socials label */
 .description,
 .gd-info,
 .social-text{
@@ -64,14 +62,13 @@ body, html{
     margin-bottom:20px;
 }
 
-/* GD info gradient animation with tighter line spacing */
 .gd-info{
     background: linear-gradient(90deg, #00ccff, #ffffff);
     background-size: 400% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gdGradient 10s ease infinite;
-    line-height:1.2; /* tighter spacing */
+    line-height:1.2;
     margin-bottom:25px;
 }
 
@@ -81,11 +78,10 @@ body, html{
     100% { background-position: 0% 50%; }
 }
 
-/* Social icons + text */
 .links{
     display:flex;
     flex-direction:column;
-    gap:8px; /* spacing between text and icons */
+    gap:8px;
     align-items:center;
     margin-top:0;
 }
@@ -104,17 +100,16 @@ body, html{
 }
 
 .links-row a:hover{
-    color:#a29bfe; /* light purple on hover */
+    color:#a29bfe;
     transform: scale(1.2);
 }
 
-/* Star and asteroid elements */
 .star, .asteroid{
     position:absolute;
     color:white;
-    font-size:2px;
     user-select:none;
     pointer-events:none;
+    will-change: transform;
 }
 </style>
 </head>
@@ -146,8 +141,8 @@ Username: yzc1
 </div>
 
 <script>
-// ---------- Stars ----------
-const starCount = 150;
+// ---------- Optimized Stars ----------
+const starCount = 80;
 const stars = [];
 
 for(let i=0;i<starCount;i++){
@@ -155,74 +150,61 @@ for(let i=0;i<starCount;i++){
     star.classList.add('star');
     star.style.left = Math.random()*window.innerWidth + 'px';
     star.style.top = Math.random()*window.innerHeight + 'px';
-
-    const size = Math.random()*4 + 2;
+    const size = Math.random()*2 + 1.5;
     star.style.fontSize = size + 'px';
-
     star.style.opacity = Math.random()*0.7 + 0.3;
-
     const chars = ['*', '+', '.', '•', '✦'];
     star.innerText = chars[Math.floor(Math.random()*chars.length)];
-
     document.body.appendChild(star);
     stars.push(star);
 }
 
-// ---------- Asteroids / comets ----------
-const asteroidCount = 50;
+// ---------- Optimized Asteroids ----------
+const asteroidCount = 30;
 const asteroids = [];
-const constantSpeed = 2; // same speed for all
+const constantSpeed = 2;
 
 for(let i=0;i<asteroidCount;i++){
-    const asteroid = document.createElement('div');
-    asteroid.classList.add('asteroid');
-
-    // random starting position
-    asteroid.x = Math.random() * window.innerWidth;
-    asteroid.y = Math.random() * -window.innerHeight; // start above screen
-
-    asteroid.vx = (Math.random()-0.5) * 1.5; // horizontal drift
-    asteroid.vy = constantSpeed; // same vertical speed
-
-    asteroid.symbols = ['*','✦','@','o','•'];
-    asteroid.innerText = asteroid.symbols[Math.floor(Math.random()*asteroid.symbols.length)];
-
-    asteroid.style.left = asteroid.x + 'px';
-    asteroid.style.top = asteroid.y + 'px';
-    asteroid.style.fontSize = (Math.random()*4+2) + 'px';
-    asteroid.style.opacity = Math.random()*0.7 + 0.3;
-
-    document.body.appendChild(asteroid);
-    asteroids.push(asteroid);
+    const a = document.createElement('div');
+    a.classList.add('asteroid');
+    a.x = Math.random()*window.innerWidth;
+    a.y = Math.random()*-window.innerHeight;
+    a.vx = (Math.random()-0.5)*1.2;
+    a.vy = constantSpeed;
+    a.symbols = ['*','✦','@','o','•'];
+    a.innerText = a.symbols[Math.floor(Math.random()*a.symbols.length)];
+    a.style.left = a.x + 'px';
+    a.style.top = a.y + 'px';
+    a.style.fontSize = (Math.random()*3+2) + 'px';
+    a.style.opacity = Math.random()*0.7 + 0.3;
+    document.body.appendChild(a);
+    asteroids.push(a);
 }
 
 // ---------- Animation ----------
+let mouseX=0, mouseY=0;
+document.addEventListener('mousemove', e=>{
+    mouseX = e.clientX/window.innerWidth;
+    mouseY = e.clientY/window.innerHeight;
+});
+
 function animate(){
-    // Parallax stars
-    document.addEventListener('mousemove', e=>{
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-        stars.forEach((star,i)=>{
-            const factor = (i % 3 + 1) * 10;
-            star.style.transform = `translate(${x*factor}px, ${y*factor}px)`;
-        });
+    stars.forEach((s,i)=>{
+        const factor = (i % 3 + 1) * 10;
+        s.style.transform = `translate3d(${mouseX*factor}px, ${mouseY*factor}px,0)`;
     });
 
-    // Move asteroids
     asteroids.forEach(a=>{
         a.x += a.vx;
         a.y += a.vy;
-
-        if(a.y > window.innerHeight || a.x < -20 || a.x > window.innerWidth+20){
-            a.x = Math.random() * window.innerWidth;
-            a.y = -20; // respawn above screen
-            a.vx = (Math.random()-0.5) * 1.5;
-            a.vy = constantSpeed; // maintain same speed
+        if(a.y > window.innerHeight || a.x<-20 || a.x>window.innerWidth+20){
+            a.x = Math.random()*window.innerWidth;
+            a.y = -20;
+            a.vx = (Math.random()-0.5)*1.2;
+            a.vy = constantSpeed;
             a.innerText = a.symbols[Math.floor(Math.random()*a.symbols.length)];
         }
-
-        a.style.left = a.x + 'px';
-        a.style.top = a.y + 'px';
+        a.style.transform = `translate3d(${a.x}px, ${a.y}px,0)`;
     });
 
     requestAnimationFrame(animate);
