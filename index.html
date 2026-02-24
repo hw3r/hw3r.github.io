@@ -6,68 +6,95 @@
 <title>hwr3</title>
 
 <style>
+
 body{
     margin:0;
     font-family:Arial, Helvetica, sans-serif;
     background:#0f172a;
     color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
 }
 
-.card{
-    background:#1e293b;
-    padding:40px;
-    border-radius:16px;
+/* sections */
+
+section{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
-    width:320px;
+    padding:40px;
 }
 
 h1{
-    margin-top:0;
-    font-size:40px;
+    font-size:64px;
+    margin-bottom:10px;
 }
 
+p{
+    opacity:0.8;
+}
+
+/* links */
+
 .links{
+    margin-top:40px;
     display:flex;
     flex-direction:column;
-    gap:12px;
-    margin-top:25px;
+    gap:20px;
 }
 
 a{
     text-decoration:none;
-    padding:12px;
-    border-radius:10px;
-    background:#334155;
+    font-size:22px;
     color:white;
-    font-weight:bold;
+    background:#334155;
+    padding:14px 28px;
+    border-radius:10px;
     transition:0.2s;
 }
 
 a:hover{
     background:#475569;
-    transform:translateY(-2px);
+    transform:translateY(-3px);
 }
+
+/* alternating background sections */
+
+.alt{
+    background:#020617;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<section>
 <h1>hwr3</h1>
 <p>Welcome to my page</p>
+</section>
 
+<section class="alt">
+<h2>YouTube</h2>
 <div class="links">
-<a href="https://www.youtube.com/@yzc1gd" target="_blank">YouTube</a>
-<a href="https://www.instagram.com/_yzc1_/reels/" target="_blank">Instagram</a>
-<a href="https://www.tiktok.com/@_yzc1_" target="_blank">TikTok</a>
+<a href="https://www.youtube.com/@yzc1gd" target="_blank">Visit Channel</a>
 </div>
+</section>
 
+<section>
+<h2>Instagram</h2>
+<div class="links">
+<a href="https://www.instagram.com/_yzc1_/reels/" target="_blank">View Instagram</a>
 </div>
+</section>
+
+<section class="alt">
+<h2>TikTok</h2>
+<div class="links">
+<a href="https://www.tiktok.com/@_yzc1_" target="_blank">Watch TikTok</a>
+</div>
+</section>
 
 </body>
 </html>
