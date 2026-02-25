@@ -18,7 +18,7 @@ body, html{
     margin:0;
     padding:0;
     height:100%;
-    overflow:hidden;
+    overflow-x:hidden; /* changed so page can scroll */
     background:black;
     color:white;
     font-family:Arial, Helvetica, sans-serif;
@@ -33,6 +33,7 @@ body, html{
     justify-content:center;
     text-align:center;
     padding:60px 20px;
+    min-height:100vh;
 }
 
 .name{
@@ -111,6 +112,41 @@ body, html{
     pointer-events:none;
     will-change: transform;
 }
+
+/* COOL PEOPLE SECTION */
+
+.cool-section{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.cool-title{
+    font-family:'Sour Gummy', cursive;
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.cool-list{
+    font-family:'Comic Neue', cursive;
+    font-size:20px;
+    display:flex;
+    gap:30px;
+}
+
+.cool-list a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.cool-list a:hover{
+    color:#a29bfe;
+    transform:scale(1.1);
+}
 </style>
 </head>
 <body>
@@ -140,6 +176,19 @@ Discord: hw3r
         </a>
     </div>
 </div>
+
+<!-- spacer so you have to scroll -->
+<div style="height:80vh;"></div>
+
+<!-- COOL PEOPLE -->
+<section class="cool-section">
+    <div class="cool-title">Cool people</div>
+    <div class="cool-list">
+        <a href="#">person 1</a>
+        <a href="#">person 2</a>
+        <a href="#">person 3</a>
+    </div>
+</section>
 
 <script>
 // ---------- Optimized Stars ----------
