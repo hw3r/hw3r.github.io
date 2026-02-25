@@ -31,9 +31,14 @@ font-family:'Sour Gummy',cursive;
 font-size:90px;
 margin-bottom:20px;
 
-background:linear-gradient(90deg,#2b0033,#5a0dad,#b57cff,#8a2be2,#2b0033);
-background-size:400%;
+background:linear-gradient(90deg,
+#2b0033,
+#5a0dad,
+#b57cff,
+#8a2be2,
+#2b0033);
 
+background-size:400%;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 
@@ -86,35 +91,22 @@ color:#ffffff;
 text-shadow:0 0 10px #a855f7;
 }
 
-/* COOL PEOPLE SECTION */
-
-.cool-section{
+.cool{
+margin-top:70vh;
 text-align:center;
-padding-bottom:120px;
 }
 
 .cool-title{
-font-family:'Sour Gummy',cursive;
-font-size:42px;
-margin-bottom:25px;
+font-size:40px;
+font-family:'Sour Gummy';
+margin-bottom:20px;
 }
 
-.cool-list{
+.cool-people{
 display:flex;
 justify-content:center;
 gap:40px;
-font-size:22px;
-}
-
-.cool-list a{
-text-decoration:none;
-color:#d6b3ff;
-transition:0.3s;
-}
-
-.cool-list a:hover{
-color:white;
-text-shadow:0 0 12px #a855f7;
+font-size:20px;
 }
 
 /* stars */
@@ -130,8 +122,9 @@ pointer-events:none;
 
 .comet{
 position:fixed;
-color:white;
+color:#ffffff;
 font-size:18px;
+opacity:0.9;
 pointer-events:none;
 }
 
@@ -165,24 +158,23 @@ Discord: hw3r
 
 </div>
 
-<!-- spacer so you must scroll -->
-<div style="height:80vh"></div>
 
-<section class="cool-section">
+<div class="cool">
 
 <div class="cool-title">Cool people</div>
 
-<div class="cool-list">
-<a href="#">person 1</a>
-<a href="#">person 2</a>
-<a href="#">person 3</a>
+<div class="cool-people">
+<div>person 1</div>
+<div>person 2</div>
+<div>person 3</div>
 </div>
 
-</section>
+</div>
+
 
 <script>
 
-/* stars */
+/* static stars */
 
 const starCount = 80
 
@@ -200,10 +192,11 @@ document.body.appendChild(star)
 
 }
 
-/* comets */
+
+/* optimized comets */
 
 const cometCount=6
-const speed=0.4
+const speed=0.05
 
 const comets=[]
 
@@ -213,28 +206,37 @@ const c=document.createElement("div")
 c.className="comet"
 c.innerText="☄"
 
+resetComet(c)
+
 document.body.appendChild(c)
 
 comets.push({
 el:c,
 x:Math.random()*window.innerWidth,
 y:Math.random()*window.innerHeight,
-dx:(Math.random()*2-1),
-dy:(Math.random()*2-1)
+dx:(Math.random()*2-1)*speed,
+dy:(Math.random()*2-1)*speed
 })
 
+}
+
+function resetComet(c){
+c.style.left=Math.random()*100+"vw"
+c.style.top="-10px"
 }
 
 function animate(){
 
 for(const c of comets){
 
-c.x+=c.dx*speed
-c.y+=c.dy*speed
+c.x+=c.dx*60
+c.y+=c.dy*60
 
 if(c.x>window.innerWidth+50||c.x<-50||c.y>window.innerHeight+50||c.y<-50){
+
 c.x=Math.random()*window.innerWidth
 c.y=-20
+
 }
 
 c.el.style.transform=`translate(${c.x}px,${c.y}px)`
