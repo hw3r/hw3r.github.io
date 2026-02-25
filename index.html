@@ -134,7 +134,9 @@ body, html{
     font-family:'Comic Neue', cursive;
     font-size:20px;
     display:flex;
-    gap:30px;
+    flex-direction: column;  /* one column */
+    gap:15px;               /* spacing between names */
+    align-items:center;
 }
 
 .cool-list a{
@@ -180,10 +182,8 @@ Discord: hw3r
 <!-- COOL PEOPLE -->
 <section class="cool-section">
     <div class="cool-title">Cool people</div>
-    <div class="cool-list">
-        <a href="#">person 1</a>
-        <a href="#">person 2</a>
-        <a href="#">person 3</a>
+    <div class="cool-list" id="coolList">
+        <!-- Names inserted by JS -->
     </div>
 </section>
 
@@ -258,6 +258,18 @@ function animate(){
 }
 
 animate();
+
+// ---------- Cool people list from array ----------
+const coolPeople = ["Alice", "Bob", "Charlie", "Daisy", "Ethan"]; // add/remove names here
+const coolListContainer = document.getElementById("coolList");
+coolListContainer.innerHTML = "";
+
+coolPeople.forEach(name => {
+    const a = document.createElement("a");
+    a.href = "#"; // placeholder link
+    a.innerText = name;
+    coolListContainer.appendChild(a);
+});
 </script>
 
 </body>
